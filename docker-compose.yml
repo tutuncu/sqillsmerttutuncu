@@ -21,6 +21,7 @@ services:
       dockerfile: src/main/docker/Dockerfile.jvm
     depends_on:
       - artemis
+    restart: on-failure
     ports:
       - "8080:8080"
     networks:

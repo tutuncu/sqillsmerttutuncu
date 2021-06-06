@@ -11,6 +11,11 @@ import javax.jms.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * A producer class publishing given data into MQ.
+ *
+ * @author mert.tutuncu
+ */
 @ApplicationScoped
 public class InputProducer {
 

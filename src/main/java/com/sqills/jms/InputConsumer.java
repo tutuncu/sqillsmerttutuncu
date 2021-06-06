@@ -12,6 +12,11 @@ import javax.jms.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * A consumer listening given MQ instance for messages.
+ *
+ * @author mert.tutuncu
+ */
 @ApplicationScoped
 public class InputConsumer implements Runnable{
 

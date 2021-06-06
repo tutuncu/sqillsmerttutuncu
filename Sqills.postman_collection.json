@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "1dcc6e82-5fd0-4da1-9729-279ed8845974",
+		"name": "Sqills",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "InputStr",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputStr\":\"com.SQILLS.assignment an.ot8er  Sample.1nput-Str\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

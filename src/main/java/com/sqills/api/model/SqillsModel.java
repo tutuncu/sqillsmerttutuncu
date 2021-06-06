@@ -1,9 +1,13 @@
 package com.sqills.api.model;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+/**
+ * Model object expected to be populated in REST API
+ *
+ * @author mert.tutuncu
+ */
 public class SqillsModel {
 
     @NotEmpty(message = "Input can not be empty!")

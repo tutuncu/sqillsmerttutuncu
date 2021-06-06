@@ -4,6 +4,11 @@ import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 
+/**
+ * A service to process the data consumed from MQ.
+ *
+ * @author mert.tutuncu
+ */
 @ApplicationScoped
 public class InputConsumptionService {
 
@@ -11,6 +16,7 @@ public class InputConsumptionService {
     private static final String SPACE = " ";
     private static final String NON_ALPHANUM_REGEX = "[^A-Za-z0-9]";
     private static final String UNDERSCORE = "_";
+
     Logger logger = Logger.getLogger(InputConsumptionService.class);
 
     public void processConsumedString(String data) {

@@ -13,6 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * Endpoint to receive input from user
+ *
+ * @author mert.tutuncu
+ */
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/api")
 public class SqillsResource {
