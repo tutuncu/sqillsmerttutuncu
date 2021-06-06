@@ -6,8 +6,7 @@ import java.util.Objects;
 
 public class SqillsModel {
 
-    @NotEmpty
-    @NotNull
+    @NotEmpty(message = "Input can not be empty!")
     String inputStr;
 
     public String getInputStr() {

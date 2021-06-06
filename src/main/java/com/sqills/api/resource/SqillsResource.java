@@ -4,6 +4,7 @@ import com.sqills.api.model.SqillsModel;
 import com.sqills.service.InputProductionService;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -21,7 +22,7 @@ public class SqillsResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response postMethod(@NotNull SqillsModel model) {
+    public Response postMethod(@Valid @NotNull SqillsModel model) {
 
         inputProductionService.processInput(model);
         return Response.ok().build();

@@ -26,24 +26,30 @@ public class InputConsumer implements Runnable{
 
 
     void onStart(@Observes StartupEvent ev) {
+
+        jmsContext = connectionFactory.createContext(Session.AUTO_ACKNOWLEDGE);
+        jmsConsumer = jmsContext.createConsumer(jmsContext.createQueue("data"));
         scheduler.submit(this);
     }
 
     void onStop(@Observes ShutdownEvent ev) {
+        jmsContext.close();
         scheduler.shutdown();
     }
 
     @Override
     public void run() {
-        try (JMSContext context = connectionFactory.createContext(Session.AUTO_ACKNOWLEDGE)) {
-            JMSConsumer consumer = context.createConsumer(context.createQueue("prices"));
             while (true) {
-                Message message = consumer.receive();
-                if (message == null) return;
-                inputConsumptionService.logConsumedData(message.getBody(String.class));
+                Message message = jmsConsumer.receive();
+                if (message == null) {
+                    return;
+                }
+                try {
+                    inputConsumptionService.processConsumedString(message.getBody(String.class));
+                } catch (JMSException e) {
+                    e.printStackTrace();
+                }
             }
-        } catch (JMSException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }
