@@ -12,12 +12,9 @@ services:
       ARTEMIS_USERNAME: quarkus
       ARTEMIS_PASSWORD: quarkus
     networks:
-      - sqillsnetwork
-  start_dependencies:
-    image: dadarek/wait-for-dependencies
-    depends_on:
-      - artemis
-    command: artemis:61616
+      bridge:
+        aliases:
+          - artemis.dev
   sqillsapp:
     build:
       context: .
@@ -27,7 +24,6 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - sqillsnetwork
-networks:
-  sqillsnetwork:
-    driver: bridge
+      bridge:
+        aliases:
+          - skillsapp.dev
