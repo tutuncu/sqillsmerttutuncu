@@ -1,16 +1,6 @@
 version: '3'
 
 services:
-  sqillsapp:
-    build:
-      context: .
-      dockerfile: src/main/docker/Dockerfile.jvm
-    depends_on:
-      - artemis
-    ports:
-      - "8080:8080"
-    networks:
-      - sqillsnetwork
   artemis:
     container_name: artemis
     image: vromero/activemq-artemis:latest-alpine
@@ -21,6 +11,21 @@ services:
     environment:
       ARTEMIS_USERNAME: quarkus
       ARTEMIS_PASSWORD: quarkus
+    networks:
+      - sqillsnetwork
+  start_dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - artemis
+    command: artemis:61616
+  sqillsapp:
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile.jvm
+    depends_on:
+      - artemis
+    ports:
+      - "8080:8080"
     networks:
       - sqillsnetwork
 networks:
