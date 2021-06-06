@@ -12,8 +12,9 @@ services:
       ARTEMIS_USERNAME: quarkus
       ARTEMIS_PASSWORD: quarkus
     networks:
-      aliases:
-        - artemis.dev
+      default:
+        aliases:
+          - artemis.dev
   sqillsapp:
     build:
       context: .
@@ -23,5 +24,6 @@ services:
     ports:
       - "8080:8080"
     networks:
-      aliases:
+      default:
+        aliases:
         - skillsapp.dev
